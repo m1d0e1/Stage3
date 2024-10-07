@@ -78,6 +78,8 @@ Evaluation metrics:
 •	R-squared: 0.7780, indicating strong correlation between training and testing sets.
 •	Mean Squared Error (MSE): 0.4803, representing squared differences between predicted and actual values.
 •	Median Absolute Error (MedAE): 0.3760, showing the median magnitude of errors in the predicted values 
+Cross-validation has been done to ensure the accuracy of the model
+
 ### Feature Importance
 The most important features were molecular weight, hydrogen bond donors and acceptors, and LogP. These descriptors provided insight into how the bioactive agents interacted with LDHA receptors. Compounds with lower molecular weights and fewer hydrogen bonds generally exhibited higher potency and better binding to the target. LogP values measured the solubility of compounds, with higher values indicating better bioavailability.
 ### Conclusion
