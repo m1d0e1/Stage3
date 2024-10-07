@@ -10,10 +10,10 @@ Using PubChem we selected <a href='images/Metabolites.docx'>50 phytochemicals</a
 ### Methodology
 #### Protein Structure Acquisition  
 The 3-dimensional structure of LDHA was predicted and downloaded in PDB format through AlphaFold proceeding towards molecular docking purposes.
-<image href="images/LDHA.png">
+<image src="images/LDHA.png">
 #### Identification of Active Site  
 Potential active sites of LDHA were identified using Fpocket revolving the regions that interact with inhibitors. PyMOL was used afterwards for visualizations.
-<image href="images/LDHA_active_site.png">
+<image src="images/LDHA_active_site.png">
 #### Phytochemical Preparation  
 The 3D structures of curated phytochemicals were downloaded in SDF format from PubChem, marged through Open Babel, and delivered into PyRx to initiate molecular docking. 
 #### Molecular Docking using PyRx  
