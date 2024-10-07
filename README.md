@@ -21,7 +21,9 @@ The molecular docking was done in PyRx. The steps involved are as follows:
 Preparation of Proteins: The water molecules were removed from the LDHA structure, adding hydrogen atoms and charges.  
 Definition of the Active Site: A grid box of 40 Å × 40 Å × 40 Å was set around the identified active site of LDHA.  
 Ligand-Receptor Interaction: The active site was used for the docking of each phytochemical using PyRx, with an exhaustiveness of 8 to ensure extensive examination of the search space. For each ligand, ten binding modes were generated.  
+
 <img src="images/LDHA_ligand.png">
+
 Binding Affinity Measurement: The result from docking was ranked by their calculated free energy of binding (ΔG), whereby the interactions are stronger with lower ΔG values.
 ### Results  
 #### Binding Affinities  
@@ -57,18 +59,22 @@ Miao, P., Sheng, S., Sun, X., Liu, J., & Huang, G. (2013). Lactate dehydrogenase
 ### Introduction
 Bioactive agents are distinctive molecular substances that greatly influence the pathways and  expression responsible for malignancy and other diseases. Expressions of LDHA indicate the presence of multiple cancer types. Hence this report represents a comprehensive overview on identifying bioactivity against the drug target LDHA (lactate dehydrogenase A) through building a machine-learning pipeline. 
 ### Summary of Primary Functions and Core Features of the Dataset
-A dataset consisting of 1107 bioactivity inputs from Homo sapiens was obtained from the ChEMBL database, specifically targeting LDHA. Two key features, SMILES (Simplified Molecular Input Line Entry System) and IC50 values (which measure bioactivity), were used to filter out missing and duplicated entries. After this filtration process, the dataset was reduced to 656 entries. The dataset was analyzed based on the following Lipinski Descriptors, which are important for determining drug-likeness:
+A dataset consisting of 1107 bioactivity inputs from Homo sapiens was obtained from the ChEMBL database, specifically targeting LDHA. Two key features, SMILES (Simplified Molecular Input Line Entry System) and IC50 values (which measure bioactivity), were used to filter out missing and duplicate entries. After this filtration process, the dataset was reduced to 525 entries. The dataset was analyzed based on the following Lipinski Descriptors, which are important for determining drug-likeness:
 •	Molecular weight < 500 Dalton
 •	SMILES format
 •	Octanol-water partition coefficient (LogP) < 5
 •	Hydrogen bond donors < 5
 •	Hydrogen bond acceptors < 10
 The IC50 values, which represent how effectively a compound inhibits the target enzyme, were used as key metrics for bioactivity assessment. These values help to evaluate the potential of compounds as drug candidates.
+<img src='img/classes.png'>
+
 ### Pre-processing Steps
-The dataset was filtered using Lipinski Descriptors to ensure drug-likeness based on molecular weight, hydrogen bonds, and LogP. IC50 values were converted to pIC50 for easier interpretation (scaled between 2 and 10). Redundant and missing values were removed. Descriptors were concatenated to organize the data. The cleaned dataset consisted of Lipinski descriptors and pIC50 measurements. Molecules were classified based on IC50: Active (<1000), Inactive (>10000) and Intermediate (1000-10000)
-The dataset was split into 80% for training and 20% for testing.
+The dataset was filtered using Lipinski Descriptors to ensure drug-likeness based on molecular weight, hydrogen bonds, and LogP. IC50 values were converted to pIC50 for easier interpretation (scaled between 2 and 10). Redundant and missing values were removed. Descriptors were concatenated to organize the data. The cleaned dataset consisted of Lipinski descriptors and pIC50 measurements. Molecules were classified based on IC50: Active (<1000), Inactive (>10000) and Intermediate (1000-10000). Other 200 descriptors were generated using the Padel script. The dataset was split into 80% for training and 20% for testing.
+
 ### Training and Testing
-A Random Forest Regressor was used for training and testing. The model combines subsets of data trees to improve prediction accuracy. Evaluation metrics:
+A Random Forest Regressor was used as a machine-learning model. The model combines subsets of data trees to improve prediction accuracy. 
+The model has been trained on 80% of the dataset. The descriptors were given to the model as the features (x) and IC50 as the output (y).
+Evaluation metrics:
 •	R-squared: 0.7780, indicating strong correlation between training and testing sets.
 •	Mean Squared Error (MSE): 0.4803, representing squared differences between predicted and actual values.
 •	Median Absolute Error (MedAE): 0.3760, showing the median magnitude of errors in the predicted values 
