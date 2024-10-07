@@ -19,12 +19,14 @@ The 3D structures of curated phytochemicals were downloaded in SDF format from P
 #### Molecular Docking using PyRx  
 The molecular docking was done in PyRx. The steps involved are as follows:  
 Preparation of Proteins: The water molecules were removed from the LDHA structure, adding hydrogen atoms and charges.  
-Definition of the Active Site: A grid box of 40 Å × 40 Å × 40 Å was set around the identified active site of PODNL1.  
+Definition of the Active Site: A grid box of 40 Å × 40 Å × 40 Å was set around the identified active site of LDHA.  
 Ligand-Receptor Interaction: The active site was used for the docking of each phytochemical using PyRx, with an exhaustiveness of 8 to ensure extensive examination of the search space. For each ligand, ten binding modes were generated.  
+<img src="images/LDHA_ligand.png">
 Binding Affinity Measurement: The result from docking was ranked by their calculated free energy of binding (ΔG), whereby the interactions are stronger with lower ΔG values.
 ### Results  
 #### Binding Affinities  
 The docking simulations generated 5 notable compounds displaying the highest predicting binding affinities to LDHA. 
+
 Eupartin: ΔG = -7.5 kcal/mol  
 Quercetin: ΔG = -7.4 kcal/mol  
 kaempferol: ΔG = -7.4 kcal/mol  
