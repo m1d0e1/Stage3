@@ -30,9 +30,9 @@ Quercetin: ΔG = -7.4 kcal/mol
 kaempferol: ΔG = -7.4 kcal/mol  
 cirsimaritin: ΔG = -7.4 kcal/mol  
 arcapillin : ΔG = -7.4 kcal/mol  
-All results are available in this <a href='images/Metabolites.docx'> Excel </a> file.
+All results are available in this <a href='images/LDHA_binding.csv'> Excel </a> file.
 #### Pipeline Reusability and Possible Applications  
-The pipeline reusability accounts for virtual screening of any other phytochemical libraries against any cancer related protein. The general protocol adopted includes: 
+The pipeline reusability accounts for the virtual screening of other phytochemical libraries against any cancer-related protein. The general protocol adopted includes: 
      Protein structure prediction 
      Ligand preparation 
      Transparent docking via PyRx 
@@ -45,12 +45,33 @@ Future applications of this pipeline could include:
 ### Conclusion
 The docking analysis showed that Eupartin is the most significant phytochemical with high binding affinities, having the potential to inhibit LDHA.
 ### References
-
-Feng, Y., Xiong, Y., Qiao, T., Li, X., Jia, L., & Han, Y. (2018). Lactate dehydrogenase A: A key player in carcinogenesis and potential target in cancer therapy. Cancer Medicine, 7(12), 6124–6136. https://doi.org/10.1002/cam4.1820
-
+Feng, Y., Xiong, Y., Qiao, T., Li, X., Jia, L., & Han, Y. (2018). Lactate dehydrogenase A: A key player in carcinogenesis and a potential target in cancer therapy. Cancer Medicine, 7(12), 6124–6136. https://doi.org/10.1002/cam4.1820
 Lang, S. J., Schmiech, M., Hafner, S., Paetz, C., Steinborn, C., Huber, R., El Gaafary, M., Werner, K., Schmidt, C. Q., Syrovets, T., & Simmet, T. (2019). Antitumor activity of an Artemisia annua herbal preparation and identification of active ingredients. Phytomedicine, 62, 152962. https://doi.org/10.1016/j.phymed.2019.152962
-
 Tjokrowidjaja, A., Lord, S. J., John, T., Lewis, C. R., Kok, P. S., Marschner, I. C., & Lee, C. K. (2022). Pre‐ and on‐treatment lactate dehydrogenase as a prognostic and predictive biomarker in advanced non–small cell lung cancer. Cancer, 128(8), 1574–1583. https://doi.org/10.1002/cncr.34113
+Miao, P., Sheng, S., Sun, X., Liu, J., & Huang, G. (2013). Lactate dehydrogenase in cancer: A promising target for diagnosis and therapy. IUBMB Life, 65(11), 904–910. https://doi.org/10.1002/iub.1216
 
-Miao, P., Sheng, S., Sun, X., Liu, J., & Huang, G. (2013). Lactate dehydrogenase a in cancer: A promising target for diagnosis and therapy. IUBMB Life, 65(11), 904–910. https://doi.org/10.1002/iub.1216
+# Stage 3 Phase 2
+
+### Introduction
+Bioactive agents are distinctive molecular substances that greatly influence the pathways and  expression responsible for malignancy and other diseases. Expressions of LDHA indicate the presence of multiple cancer types. Hence this report represents a comprehensive overview on identifying bioactivity against the drug target LDHA (lactate dehydrogenase A) through building a machine-learning pipeline. 
+### Summary of Primary Functions and Core Features of the Dataset
+A dataset consisting of 1107 bioactivity inputs from Homo sapiens was obtained from the ChEMBL database, specifically targeting LDHA. Two key features, SMILES (Simplified Molecular Input Line Entry System) and IC50 values (which measure bioactivity), were used to filter out missing and duplicated entries. After this filtration process, the dataset was reduced to 656 entries. The dataset was analyzed based on the following Lipinski Descriptors, which are important for determining drug-likeness:
+•	Molecular weight < 500 Dalton
+•	SMILES format
+•	Octanol-water partition coefficient (LogP) < 5
+•	Hydrogen bond donors < 5
+•	Hydrogen bond acceptors < 10
+The IC50 values, which represent how effectively a compound inhibits the target enzyme, were used as key metrics for bioactivity assessment. These values help to evaluate the potential of compounds as drug candidates.
+### Pre-processing Steps
+The dataset was filtered using Lipinski Descriptors to ensure drug-likeness based on molecular weight, hydrogen bonds, and LogP. IC50 values were converted to pIC50 for easier interpretation (scaled between 2 and 10). Redundant and missing values were removed. Descriptors were concatenated to organize the data. The cleaned dataset consisted of Lipinski descriptors and pIC50 measurements. Molecules were classified based on IC50: Active (<1000), Inactive (>10000) and Intermediate (1000-10000)
+The dataset was split into 80% for training and 20% for testing.
+### Training and Testing
+A Random Forest Regressor was used for training and testing. The model combines subsets of data trees to improve prediction accuracy. Evaluation metrics:
+•	R-squared: 0.7780, indicating strong correlation between training and testing sets.
+•	Mean Squared Error (MSE): 0.4803, representing squared differences between predicted and actual values.
+•	Median Absolute Error (MedAE): 0.3760, showing the median magnitude of errors in the predicted values 
+### Feature Importance
+The most important features were molecular weight, hydrogen bond donors and acceptors, and LogP. These descriptors provided insight into how the bioactive agents interacted with LDHA receptors. Compounds with lower molecular weights and fewer hydrogen bonds generally exhibited higher potency and better binding to the target. LogP values measured the solubility of compounds, with higher values indicating better bioavailability.
+### Conclusion
+The machine learning model successfully predicted bioactivity against LDHA. Key molecular descriptors played a significant role in improving the drug discovery process by identifying potential bioactive compounds.
 
