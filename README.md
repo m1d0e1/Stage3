@@ -5,13 +5,15 @@ Lung cancer is one of the most common and serious types of cancer. Lung cancer s
 Lactate dehydrogenase A (LDHA) catalyzes the conversion of pyruvate to lactate, and its abnormal expression and activation have been strongly linked to various cancers(Tjokrowidjaja et al., 2022). LDHA is located in the cytoplasm. Inhibition of LDHA is known to reduce migration of cancer cells, invasion and cancer metastasis (Feng et al., 2018).
 
 ### Curated phytochemical library
-Using PubChem we selected 50 phytochemicals from Artemisia annua, a medicinal plant renowned for its medicinal properties, including potential cancer-preventive benefits(Lang et al., 2019).
+Using PubChem we selected <a href='images/Metabolites.docx'>50 phytochemicals</a> from Artemisia annua, a medicinal plant renowned for its medicinal properties, including potential cancer-preventive benefits(Lang et al., 2019).
 
 ### Methodology
 #### Protein Structure Acquisition  
 The 3-dimensional structure of LDHA was predicted and downloaded in PDB format through AlphaFold proceeding towards molecular docking purposes.
+<image href="images/LDHA.png">
 #### Identification of Active Site  
 Potential active sites of LDHA were identified using Fpocket revolving the regions that interact with inhibitors. PyMOL was used afterwards for visualizations.
+<image href="images/LDHA_active_site.png">
 #### Phytochemical Preparation  
 The 3D structures of curated phytochemicals were downloaded in SDF format from PubChem, marged through Open Babel, and delivered into PyRx to initiate molecular docking. 
 #### Molecular Docking using PyRx  
@@ -28,7 +30,7 @@ Quercetin: ΔG = -7.4 kcal/mol
 kaempferol: ΔG = -7.4 kcal/mol  
 cirsimaritin: ΔG = -7.4 kcal/mol  
 arcapillin : ΔG = -7.4 kcal/mol  
-
+All results are available in this <a href='images/Metabolites.docx'> Excel </a> file.
 #### Pipeline Reusability and Possible Applications  
 The pipeline reusability accounts for virtual screening of any other phytochemical libraries against any cancer related protein. The general protocol adopted includes: 
      Protein structure prediction 
